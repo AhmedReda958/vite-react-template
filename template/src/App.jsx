@@ -16,7 +16,7 @@ function App() {
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-        <a href="https://react.dev" target="_blank">
+        <a href="https://tailwindcss.com" target="_blank">
           <img src={tailwindLogo} className="logo react" alt="React logo" />
         </a>
       </div>
