@@ -1,0 +1,16 @@
+{
+  "name": "react-mostused-template",
+  "version": "0.0.1",
+  "description": "",
+  "bin": {
+    "react-mostused-template": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ahmed Reda",
+  "license": "MIT",
+  "dependencies": {
+    "cross-spawn": "^7.0.3"
+  }
+}
