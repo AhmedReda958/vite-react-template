@@ -1,13 +1,30 @@
 {
   "name": "vite-react-template",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.1.3",
+  "description": "Vite React Template: Start React projects instantly with Vite, Tailwind CSS, and React Router pre-configured for rapid development.",
   "bin": {
     "vite-react-template": "./index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Ahmed Reda",
-  "license": "MIT"
+  "author": {
+    "name": "Ahmed Reda",
+    "email": "areda.gad@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AhmedReda958/vite-react-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AhmedReda958/vite-react-template.git/issues"
+  },
+  "homepage": "https://github.com/AhmedReda958/vite-react-template.git#readme",
+  "keywords": [
+    "Vite",
+    "React",
+    "React Router DOM",
+    "Tailwind"
+  ]
 }
