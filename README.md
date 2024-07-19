@@ -26,7 +26,7 @@ After creating your project using Vite React Template, you can start developing 
 
 ## 📚 Documentation
 
-For more detailed documentation and information on customizing the template, please refer to the [GitHub repository](https://github.com/example/vite-react-template).
+For more detailed documentation and information on customizing the template, please refer to the [GitHub repository](https://github.com/AhmedReda958/vite-react-template).
 
 ## 🤝 Contributing
 
