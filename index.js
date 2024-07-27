@@ -1,45 +1,44 @@
-#!/usr/bin/env node
+#!/usr/bin/env 
 
-const fs = require("fs");
-const path = require("path");
+const { join, resolve } = require("path");
+const { cpSync, mkdirSync, writeFileSync } = require("fs");
 
-// The first argument will be the project name.
-const projectName = process.argv[2];
+function getProjectName() {
+  return process.argv[2];
+}
 
-// Create a project directory with the project name.
-const currentDir = process.cwd();
-const projectDir = path.resolve(currentDir, projectName);
-fs.mkdirSync(projectDir, { recursive: true });
+function createProjectDirectory(projectDir) {
+  mkdirSync(projectDir, { recursive: true });
+}
 
-// A common approach to building a starter template is to
-// create a `template` folder which will house the template
-// and the files we want to create.
-const templateDir = path.resolve(__dirname, "template");
-fs.cpSync(templateDir, projectDir, { recursive: true });
+function copyTemplateFiles(templateDir, projectDir) {
+  cpSync(templateDir, projectDir, { recursive: true });
+}
 
-// It is good practice to have dotfiles stored in the
-// template without the dot (so they do not get picked
-// up by the starter template repository). We can rename
-// the dotfiles after we have copied them over to the
-// new project directory.
-// fs.renameSync(
-//   path.join(projectDir, "gitignore"),
-//   path.join(projectDir, ".gitignore")
-// );
+function updatePackageJson(projectDir, projectName) {
+  const packageJsonPath = join(projectDir, "package.json");
+  const projectPackageJson = require(packageJsonPath);
+  projectPackageJson.name = projectName;
+  writeFileSync(packageJsonPath, JSON.stringify(projectPackageJson, null, 2));
+}
 
-const projectPackageJson = require(path.join(projectDir, "package.json"));
+function printSuccessMessage(projectName) {
+  console.log("Success! Your new project is ready.\nNow run:");
+  console.log(`cd ${projectName.includes(" ") ? `"${projectName}"` : projectName}`);
+  console.log("npm install");
+  console.log("npm run dev");
+}
 
-// Update the project's package.json with the new project name
-projectPackageJson.name = projectName;
+function main() {
+  const projectName = getProjectName();
+  const currentDir = process.cwd();
+  const projectDir = resolve(currentDir, projectName);
+  const templateDir = resolve(__dirname, "template");
 
-fs.writeFileSync(
-  path.join(projectDir, "package.json"),
-  JSON.stringify(projectPackageJson, null, 2)
-);
+  createProjectDirectory(projectDir);
+  copyTemplateFiles(templateDir, projectDir);
+  updatePackageJson(projectDir, projectName);
+  printSuccessMessage(projectName);
+}
 
-console.log("Success! Your new project is ready.\nNow run:\n");
-console.log(
-  `cd ${projectName.includes(" ") ? `"${templateDir}"` : projectName}\n`
-);
-console.log(`npm install \n`);
-console.log(`npm run dev \n`);
+main();
